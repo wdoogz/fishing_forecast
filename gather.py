@@ -15,8 +15,8 @@ def zip_to_geo(zipcode):
             os.makedirs("/tmp/geocodes")
         except Exception as e:
             pass
-
-        URL = "https://www.zipcodeapi.com/rest/YFel5D52qU9IQnlCK8obG7QmiEd3HF32jbj49eNu8vCOYR6ZfA3bRYa1SFxnvFpx/info.json/{}/degrees".format(zipcode)
+        with open("/tmp/apikey") as ak:
+            URL = "https://www.zipcodeapi.com/rest/{}/info.json/{}/degrees".format(ak.read(),zipcode)
         
         geo_co = requests.get(URL).json()
         
